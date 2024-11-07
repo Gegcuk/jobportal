@@ -2,16 +2,22 @@ package uk.gegc.jobportal.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
 @Table(name = "users")
 public class Users {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;
 
     @Column(unique = true)
@@ -28,66 +34,4 @@ public class Users {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userTypeId", referencedColumnName = "userTypeId")
     private UsersType userTypeId;
-
-    public Users() {
-    }
-
-    public Users(int userId, String email, String password, boolean isActive, Date registrationDate, UsersType userTypeId) {
-        this.userId = userId;
-        this.email = email;
-        this.password = password;
-        this.isActive = isActive;
-        this.registrationDate = registrationDate;
-        this.userTypeId = userTypeId;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public @NotEmpty String getPassword() {
-        return password;
-    }
-
-    public void setPassword(@NotEmpty String password) {
-        this.password = password;
-    }
-
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
-    }
-
-    public Date getRegistrationDate() {
-        return registrationDate;
-    }
-
-    public void setRegistrationDate(Date registrationDate) {
-        this.registrationDate = registrationDate;
-    }
-
-    public UsersType getUserTypeId() {
-        return userTypeId;
-    }
-
-    public void setUserTypeId(UsersType userTypeId) {
-        this.userTypeId = userTypeId;
-    }
-
-
 }
