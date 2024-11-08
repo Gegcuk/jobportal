@@ -54,7 +54,7 @@ public class UsersController {
 
         usersService.addNew(users);
         System.out.println(users);
-        return "dashboard";
+        return "redirect:/dashboard/";
     }
 
     @GetMapping("/login")
