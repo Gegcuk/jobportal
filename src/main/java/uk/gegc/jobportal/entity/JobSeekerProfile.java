@@ -17,7 +17,7 @@ import java.util.List;
 public class JobSeekerProfile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int userAccountId;
+    private Integer userAccountId;
 
     @OneToOne
     @JoinColumn(name = "user_account_id")
@@ -42,6 +42,12 @@ public class JobSeekerProfile {
         this.userId = userId;
     }
 
+    @Transient
+    public String getPhotosImagePath(){
+        if(profilePhoto == null || userAccountId == null) return null;
+        return "/photos/candidate/" + userAccountId + "/" + profilePhoto;
+    }
+
     @Override
     public String toString() {
         return "JobSeekerProfile{" +
@@ -56,7 +62,6 @@ public class JobSeekerProfile {
                 ", employmentType='" + employmentType + '\'' +
                 ", resume='" + resume + '\'' +
                 ", profilePhoto='" + profilePhoto + '\'' +
-                ", skills=" + skills +
                 '}';
     }
 }
