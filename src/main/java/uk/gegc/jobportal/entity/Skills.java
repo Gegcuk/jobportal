@@ -14,7 +14,7 @@ public class Skills {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String name;
     private String experienceLevel;
     private String yearsOfExperience;

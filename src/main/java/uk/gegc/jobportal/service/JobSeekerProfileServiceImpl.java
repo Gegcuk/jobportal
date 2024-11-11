@@ -18,4 +18,9 @@ public class JobSeekerProfileServiceImpl implements JobSeekerProfileService {
     public Optional<JobSeekerProfile> getOne(Integer id) {
         return jobSeekerProfileRepository.findById(id);
     }
+
+    @Override
+    public JobSeekerProfile addNew(JobSeekerProfile jobSeekerProfile) {
+        return jobSeekerProfileRepository.save(jobSeekerProfile);
+    }
 }
