@@ -8,4 +8,6 @@ public interface RecruiterProfileService {
     public Optional<RecruiterProfile> getOne(Integer id);
 
     RecruiterProfile addNew(RecruiterProfile recruiterProfile);
+
+    RecruiterProfile getCurrentRecruiterProfile();
 }

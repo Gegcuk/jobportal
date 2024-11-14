@@ -3,12 +3,14 @@ package uk.gegc.jobportal.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 import uk.gegc.jobportal.entity.IRecruiterJobs;
 import uk.gegc.jobportal.entity.JobPostActivity;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@Repository
 public interface JobPostActivityRepository extends JpaRepository<JobPostActivity, Integer> {
     @Query(value = " SELECT COUNT(s.user_id) as totalCandidates,j.job_post_id,j.job_title,l.id as locationId,l.city,l.state,l.country,c.id as companyId,c.name FROM job_post_activity j " +
             " inner join job_location l " +
